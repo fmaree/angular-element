@@ -9,11 +9,12 @@ jobs:
       - checkout
       - node/with-cache:
           steps:
+            - run: npm config set registry https://registry.npmjs.org/
             - run: npm config set loglevel info
-            - run: npm config set registry registry
             - run: npm config set ignore-scripts true
             - run: npm install
-            - run: npm test
+            - run: npm audit
+            - run: npm run test
 workflows:
     build-and-test:
       jobs:
