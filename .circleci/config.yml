@@ -13,8 +13,8 @@ jobs:
             - run: npm config set loglevel info
             - run: npm config set ignore-scripts true
             - run: npm install
-            - run: npm audit
-            - run: npm run test
+            - run: npm audit fix --only=prod --audit-level=moderate
+            - run: npm run test --if-present
 workflows:
     build-and-test:
       jobs:
